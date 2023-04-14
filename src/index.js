@@ -11,26 +11,21 @@ const genDiff = (filepath1, filepath2) => {
   const keys1 = Object.keys(file1);
   const keys2 = Object.keys(file2);
   const all = _.sortBy(_.union(keys1, keys2));
-  const iter = (arr1, arr2) => {
-    let result = '{\n';
-    all.map((key) => {
-      if (arr1.includes(key) && arr2.includes(key)) {
-        if (file1[key] === file2[key]) {
-          result += `   ${key}: ${file1[key]} \n`;
-        } else {
-          result += ` - ${key}: ${file1[key]}\n + ${key}: ${file2[key]}\n`;
-        }
-      } else if (arr1.includes(key)) {
-        result += ` - ${key}: ${file1[key]}\n`;
-      } else if (arr2.includes(key)) {
-        result += ` + ${key}: ${file2[key]}\n`;
-      }
-      return result;
-    });
-    result += '}';
-    return result;
-  };
-  console.log(iter(keys1, keys2));
+  const result = all.reduce((acc, currentValue) => {
+    let difference = acc;
+    if (!Object.hasOwn(file2, currentValue)) {
+      difference += ` - ${currentValue}: ${file1[currentValue]}\n`;
+    } else if (!Object.hasOwn(file1, currentValue)) {
+      difference += ` + ${currentValue}: ${file2[currentValue]}\n`;
+    } else if (file1[currentValue] !== file2[currentValue]) {
+      difference += ` - ${currentValue}: ${file1[currentValue]}\n`;
+      difference += ` + ${currentValue}: ${file2[currentValue]}\n`;
+    } else {
+      difference += `   ${currentValue}: ${file1[currentValue]}\n`;
+    }
+    return difference;
+  }, '');
+  console.log(`{\n${result}}`);
 };
 
 export default genDiff;
