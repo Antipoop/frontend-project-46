@@ -1,8 +1,8 @@
-name: tests
+name: hello-world
 on: push
 jobs:
   my-job:
     runs-on: ubuntu-latest
     steps:
       - name: my-step
-        run: 'npm test'
+        run: echo "Hello World!"
