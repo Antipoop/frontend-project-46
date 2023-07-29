@@ -5,7 +5,7 @@ const extname = (filepath) => path.extname(filepath);
 
 const genDiff = (filepath1, filepath2) => {
   if (extname(filepath1) === '.json' && extname(filepath2) === '.json') {
-    getGenDiff(filepath1, filepath2);
+    return getGenDiff(filepath1, filepath2);
   }
 };
 

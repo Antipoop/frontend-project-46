@@ -25,7 +25,7 @@ const getGenDiff = (filepath1, filepath2) => {
     }
     return difference;
   }, '');
-  console.log(`{\n${result}}`);
+  return `{\n${result}}`;
 };
 
 export default getGenDiff;
