@@ -5,4 +5,4 @@ gendiff:
 lint:
 	npx eslint .
 test:
-	node __tests__/index.test.js
+	npm run test
