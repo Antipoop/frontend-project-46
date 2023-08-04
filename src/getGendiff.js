@@ -1,5 +1,5 @@
 import _ from 'lodash';
-import parse from './parse.js'
+import parse from './parse.js';
 
 const getSortedUnionKeys = (data1, data2) => {
   const keys1 = Object.keys(data1);

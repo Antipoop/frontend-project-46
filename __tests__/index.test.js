@@ -5,5 +5,5 @@ test('diff json', () => {
   expect(genDiff('__fixtures__/testFile1.json', '__fixtures__/testFile2.json')).toEqual(result);
 });
 test('diff yml', () => {
-  expect(genDiff('__fixtures__/testFile1.yml', '__fixtures__/testFile2.yml')).toEqual(result)
+  expect(genDiff('__fixtures__/testFile1.yml', '__fixtures__/testFile2.yml')).toEqual(result);
 });
