@@ -10,19 +10,21 @@ const getSortedUnionKeys = (data1, data2) => {
 };
 
 const minusOrPlus = (data1, data2, key) => {
+  let result = '';
   if (key in data1 && key in data2 === false) {
-    return ` - ${key}: ${data1[key]}`;
+    result = ` - ${key}: ${data1[key]}`;
   }
   if (key in data2 && key in data1 === false) {
-    return ` + ${key}: ${data2[key]}`;
+    result = ` + ${key}: ${data2[key]}`;
   }
   if (data1[key] && data2[key]) {
     if (data1[key] !== data2[key]) {
-      return ` - ${key}: ${data1[key]}\n + ${key}: ${data2[key]}`;
+      result = ` - ${key}: ${data1[key]}\n + ${key}: ${data2[key]}`;
+    } else {
+      result = `   ${key}: ${data1[key]}`;
     }
-    return `   ${key}: ${data1[key]}`;
   }
-  return null;
+  return result;
 };
 
 const getGenDiff = (filepath1, filepath2) => {
