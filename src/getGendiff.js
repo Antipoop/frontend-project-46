@@ -16,13 +16,10 @@ const minusOrPlus = (data1, data2, key) => {
   if (key in data2 && key in data1 === false) {
     return ` + ${key}: ${data2[key]}`;
   }
-  if (data1[key] && data2[key]) {
-    if (data1[key] !== data2[key]) {
-      return ` - ${key}: ${data1[key]}\n + ${key}: ${data2[key]}`;
-    }
-    return `   ${key}: ${data1[key]}`;
+  if (data1[key] !== data2[key]) {
+    return ` - ${key}: ${data1[key]}\n + ${key}: ${data2[key]}`;
   }
-  return null;
+  return `   ${key}: ${data1[key]}`;
 };
 
 const getGenDiff = (filepath1, filepath2) => {
