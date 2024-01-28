@@ -19,4 +19,4 @@ const parse = (filename) => {
   return getData(filename, extension);
 };
 
-export default parse;
+export { parse };
